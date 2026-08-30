@@ -1,0 +1,22 @@
+{
+  "name": "arcron-keeper-ts",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "description": "TestNet Arcron keeper bot on the published @corvidlabs/arcron JS client. --dry-run signs nothing.",
+  "type": "module",
+  "scripts": {
+    "fetch-client": "bun scripts/fetch-arcron-js.ts",
+    "dry-run": "bun src/cli.ts --dry-run",
+    "start": "bun src/cli.ts --dry-run",
+    "execute": "bun src/cli.ts --execute",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@corvidlabs/arcron": "file:./.deps/arcron-js",
+    "algosdk": "^3"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.0"
+  }
+}
