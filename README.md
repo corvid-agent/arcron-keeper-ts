@@ -32,10 +32,21 @@ bun src/cli.ts --dry-run
 
 `bun src/cli.ts --execute` needs KEEPER_MNEMONIC in a gitignored local .env. It still refuses MainNet genesis. Copy .env.example (TestNet URLs only).
 
+## TypeScript listener (no mnemonic, dry-run only)
+
+`scripts/listen.ts` talks to TestNet algod only. It reuses `src/scan.ts` (package `decodeUpkeep`, not a vendored CorvidLabs/arcron decoder), skips upkeep 81 and target app `770041460`, and writes `docs/due.json`. It does **not** sign, has **no mnemonic**, and is **not** an execute.
+
+Weekdays at 15:00, 18:00, and 22:00 UTC (9am / 12pm / 4pm America/Denver) `.github/workflows/listen.yml` runs `bun scripts/listen.ts` and commits `docs/due.json` if it changed. No secrets.
+
+```
+bun scripts/listen.ts
+```
+
+The CRT board in `docs/` reads that JSON (last-round + due list). GitHub Pages from this PR branch if the repo allows it; otherwise Pages works after merge to the default branch. Scheduled Actions only fire on the default branch — until then, run locally or `workflow_dispatch` this ref.
 
 ## Measured cost
 
-Package constant EXECUTE_FEE is 3000 uALGO (outer 1000 plus 2000 extra for inners). Plus 1000 only if the upkeep has an ASA bonus and the keeper is opted in. No on-chain fee was measured because nothing was signed.
+Package constant EXECUTE_FEE is 3000 uALGO (outer 1000 plus 2000 extra for inners). Plus 1000 only if the upkeep has an ASA bonus and the keeper is opted in. No on-chain fee was measured because nothing was signed. The listener is read-only.
 
 ## What is broken
 
@@ -45,5 +56,4 @@ Package constant EXECUTE_FEE is 3000 uALGO (outer 1000 plus 2000 extra for inner
 
 ## Honesty
 
-TestNet only. Unaudited. frozen=0. First-party demo, not a product. Apache-2.0. No mnemonic in git. Skips upkeep 81 and target app 770041460. Refuses mainnet-v1.0. --dry-run loads no signer.
-
+TestNet only. Unaudited. frozen=0. First-party demo, not a product. Apache-2.0. No mnemonic in git. Skips upkeep 81 and target app 770041460. Refuses mainnet-v1.0. --dry-run loads no signer. The listener never loads a signer.

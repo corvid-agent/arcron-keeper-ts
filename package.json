@@ -10,6 +10,7 @@
     "dry-run": "bun src/cli.ts --dry-run",
     "start": "bun src/cli.ts --dry-run",
     "execute": "bun src/cli.ts --execute",
+    "listen": "bun scripts/listen.ts",
     "test": "bun test"
   },
   "dependencies": {

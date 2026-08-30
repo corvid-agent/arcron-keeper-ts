@@ -17,4 +17,10 @@ describe("published client", () => {
     expect(joined.includes("HEAD_BYTES")).toBe(false);
     expect(joined.includes("BOX_NAME_PREFIX")).toBe(false);
   });
+  test("listener does not vendor the upkeep decoder", () => {
+    const listen = readFileSync(join(import.meta.dir, "..", "scripts", "listen.ts"), "utf8");
+    expect(listen.includes('from "../src/scan"')).toBe(true);
+    expect(listen.includes("HEAD_BYTES")).toBe(false);
+    expect(listen.includes("BOX_NAME_PREFIX")).toBe(false);
+  });
 });

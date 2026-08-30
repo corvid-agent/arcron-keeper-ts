@@ -1,0 +1,39 @@
+name: listen
+
+on:
+  schedule:
+    - cron: "0 15,18,22 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: listen
+  cancel-in-progress: true
+
+jobs:
+  listen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.0"
+      - name: fetch JS client
+        run: bun scripts/fetch-arcron-js.ts
+      - name: install
+        run: bun install
+      - name: Listen (no key)
+        run: bun scripts/listen.ts
+      - name: Commit docs/due.json if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/due.json
+          if git diff --cached --quiet; then
+            echo "due.json unchanged"
+          else
+            git commit -m "Refresh docs/due.json from TestNet listener"
+            git push
+          fi
