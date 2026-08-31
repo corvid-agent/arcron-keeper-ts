@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-08-31T14:16:17Z",
+  "algod": "https://testnet-api.algonode.cloud",
+  "hub": 770130162,
+  "genesis": "testnet-v1.0",
+  "last_round": 66850427,
+  "next_rain_id": 5,
+  "rains": [
+    {
+      "id": 1,
+      "label": "Corvid daily",
+      "mode": "SPLIT",
+      "drip": 50000,
+      "pot": 850000,
+      "tickets": 1,
+      "prize_locked": 0,
+      "commit_round": 0,
+      "status": "open"
+    },
+    {
+      "id": 2,
+      "label": "Corvid GM",
+      "mode": "WAVE",
+      "drip": 50000,
+      "pot": 950000,
+      "tickets": 1,
+      "prize_locked": 0,
+      "commit_round": 0,
+      "status": "open"
+    },
+    {
+      "id": 3,
+      "label": "live ALGO one",
+      "mode": "ONE",
+      "drip": 50000,
+      "pot": 200000,
+      "tickets": 3,
+      "prize_locked": 50000,
+      "commit_round": 66831694,
+      "status": "abandonable"
+    },
+    {
+      "id": 4,
+      "label": "live ASA split",
+      "mode": "SPLIT",
+      "drip": 1000,
+      "pot": 0,
+      "tickets": 1,
+      "prize_locked": 0,
+      "commit_round": 0,
+      "status": "open"
+    },
+    {
+      "id": 5,
+      "label": "swarm audit split",
+      "mode": "SPLIT",
+      "drip": 10000,
+      "pot": 0,
+      "tickets": 2,
+      "prize_locked": 0,
+      "commit_round": 0,
+      "status": "open"
+    }
+  ]
+}
