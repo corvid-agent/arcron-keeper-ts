@@ -1,128 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-board="KEEPER-TS">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ARCRON-KEEPER-TS</title>
-  <meta name="description" content="TypeScript Arcron listener. Due list from docs/due.json. TestNet only. No mnemonic. Dry-run only." />
+  <title>KEEPER-TS — DUE, skip 81</title>
+  <meta name="description" content="TestNet due board from docs/due.json. Skip upkeep 81. Read-only. Not an execute." />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <main class="crt" id="crt">
     <header>
       <h1>Keeper-TS</h1>
-      <div class="meta">TestNet · unaudited · no mnemonic</div>
+      <div class="meta">TestNet · listener · skip 81 · not an execute</div>
     </header>
 
     <section class="status-row">
-      <div class="label">Board</div>
-      <div class="destination grounded" id="headline">loading due.json</div>
-      <div class="meta" id="subhead">TypeScript listener · dry-run only · not an execute</div>
+      <div class="label">Headline</div>
+      <div class="flaps big" id="status" aria-label="due headline">DUE</div>
+      <div class="meta" id="subhead">skip 81 · loading due.json · not an execute</div>
     </section>
 
-    <section class="board">
-      <div class="cell">
-        <div class="label">Due</div>
-        <div class="flaps" id="due-count" aria-label="due count"></div>
-      </div>
+    <section class="board" id="board">
       <div class="cell">
         <div class="label">Last round</div>
-        <div class="flaps" id="last-round" aria-label="last round"></div>
+        <div class="flaps" id="stat-round" aria-label="last round"></div>
+      </div>
+      <div class="cell">
+        <div class="label">Listed</div>
+        <div class="flaps" id="stat-listed" aria-label="listed upkeeps"></div>
+      </div>
+      <div class="cell">
+        <div class="label">Due count</div>
+        <div class="flaps" id="stat-due" aria-label="due count"></div>
+      </div>
+      <div class="cell">
+        <div class="label">Skipped</div>
+        <div class="flaps" id="stat-skip" aria-label="skipped upkeep ids"></div>
       </div>
     </section>
 
-    <section class="due" aria-label="due upkeeps">
-      <h2>DUE <span class="n" id="n-due">0</span></h2>
-      <p class="why">package isExecutable · skip upkeep 81 / app 770041460 · from due.json, not live algod</p>
-      <table>
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>target</th>
-            <th>next</th>
-            <th>fee</th>
-            <th>balance</th>
-          </tr>
-        </thead>
-        <tbody id="due-body">
-          <tr><td colspan="5" class="empty">loading…</td></tr>
-        </tbody>
-      </table>
+    <section class="due-list" aria-label="due upkeeps">
+      <div class="label">Due list</div>
+      <p class="why">package isExecutable · skip 81 · from due.json, not live algod</p>
+      <div id="due-rows"></div>
     </section>
 
     <p class="notes" id="notes">
-      Listener is TypeScript. It talks to TestNet algod only, reuses
-      <code>src/scan.ts</code> decode from <code>@corvidlabs/arcron</code>,
-      and never loads a signer.
-      Skip list: upkeep <code>81</code> and target app <code>770041460</code>.
+      Unsigned TypeScript listener wrote this list from TestNet algod (package isExecutable). Skip upkeep 81 and target app 770041460. The board does not sign and is not an execute. 
       <a href="https://github.com/corvid-agent/arcron-keeper-ts">source</a>
       ·
-      <a href="https://testnet.explorer.perawallet.app/application/769891898">keeper 769891898</a>
+      <a href="https://testnet.explorer.perawallet.app/application/769891898">keeper 769891898</a>.
     </p>
     <p class="err" id="err" hidden></p>
+    <footer class="foot">Arcron is unaudited. TestNet only. Read-only, no wallet. Not an execute.</footer>
   </main>
-  <script>
-    function flaps(el, text, width) {
-      const s = String(text).padStart(width, " ").slice(-width);
-      el.replaceChildren();
-      for (const ch of s) {
-        const d = document.createElement("span");
-        d.className = "flap" + (ch === " " ? " blank" : "");
-        d.textContent = ch === " " ? "0" : ch;
-        el.appendChild(d);
-      }
-    }
-
-    flaps(document.getElementById("due-count"), "0", 4);
-    flaps(document.getElementById("last-round"), "0", 10);
-
-    fetch("./due.json", { cache: "no-store" })
-      .then(function (res) {
-        if (!res.ok) throw new Error("due.json " + res.status);
-        return res.json();
-      })
-      .then(function (data) {
-        var due = data.due || [];
-        var headline = document.getElementById("headline");
-        var subhead = document.getElementById("subhead");
-        flaps(document.getElementById("due-count"), String(data.due_count ?? due.length), 4);
-        flaps(document.getElementById("last-round"), String(data.last_round ?? 0), 10);
-        document.getElementById("n-due").textContent = String(due.length);
-        subhead.textContent =
-          "app " + (data.app || "769891898") +
-          " · " + (data.genesis || "testnet") +
-          " · " + (data.generated_at || "—");
-        if (due.length) {
-          headline.textContent = due.length + " due";
-          headline.className = "destination live";
-          document.title = "KEEPER-TS — " + due.length + " due";
-        } else {
-          headline.textContent = "none due";
-          headline.className = "destination grounded";
-          document.title = "KEEPER-TS — none due";
-        }
-        var body = document.getElementById("due-body");
-        if (!due.length) {
-          body.innerHTML = '<tr><td colspan="5" class="empty">none due</td></tr>';
-          return;
-        }
-        body.innerHTML = due.map(function (u) {
-          return "<tr>" +
-            '<td class="num">#' + u.id + "</td>" +
-            '<td class="num">' + u.target + "</td>" +
-            '<td class="num">' + u.next + "</td>" +
-            '<td class="num">' + u.fee + "</td>" +
-            '<td class="num">' + u.balance + "</td>" +
-            "</tr>";
-        }).join("");
-      })
-      .catch(function (err) {
-        document.getElementById("headline").textContent = "GROUNDED";
-        document.getElementById("headline").className = "destination grounded";
-        document.getElementById("err").hidden = false;
-        document.getElementById("err").textContent = "due.json failed: " + (err && err.message ? err.message : err);
-        document.getElementById("due-body").innerHTML = '<tr><td colspan="5" class="empty">due.json unavailable</td></tr>';
-      });
-  </script>
+  <script src="./app.js"></script>
 </body>
 </html>
