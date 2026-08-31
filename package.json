@@ -11,7 +11,8 @@
     "start": "bun src/cli.ts --dry-run",
     "execute": "bun src/cli.ts --execute",
     "listen": "bun scripts/listen.ts",
-    "test": "bun test"
+    "test": "bun test",
+    "rain": "bun scripts/rain.ts"
   },
   "dependencies": {
     "@corvidlabs/arcron": "file:./.deps/arcron-js",
