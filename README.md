@@ -36,7 +36,7 @@ bun src/cli.ts --dry-run
 
 `scripts/listen.ts` talks to TestNet algod only. It reuses `src/scan.ts` (package `decodeUpkeep`, not a vendored CorvidLabs/arcron decoder), skips upkeep 81 and target app `770041460`, and writes `docs/due.json`. It does **not** sign, has **no mnemonic**, and is **not** an execute.
 
-`scripts/rain.ts` walks hub `770130162` RainRec boxes (224 bytes, key `r||id`) and writes `docs/rain.json`. No key. Not a send. Same weekday schedule as listen.
+`scripts/rain.ts` walks hub `770130162` RainRec boxes (224 bytes, key `r||id`) and writes `docs/rain.json`. No key. Not a send. Same weekday schedule as listen. Hub is pre-#213 (prize_locked field exists; enter-while-locked assert does not) and immutable. Not product rain. Do not copy this app id into `arcron-rain` ([#232](https://github.com/CorvidLabs/arcron/issues/232)).
 
 Weekdays at 15:00, 18:00, and 22:00 UTC (9am / 12pm / 4pm America/Denver) `.github/workflows/listen.yml` runs `bun scripts/listen.ts` and commits `docs/due.json` if it changed. No secrets.
 
