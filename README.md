@@ -42,7 +42,7 @@ Weekdays at 15:00, 18:00, and 22:00 UTC (9am / 12pm / 4pm America/Denver) `.gith
 bun scripts/listen.ts
 ```
 
-The CRT board in `docs/` reads that JSON (last-round + due list). Pages is enabled from this branch: https://corvid-agent.github.io/arcron-keeper-ts/ . After merge, point Pages at `main`/`docs` or the site dies if this branch is deleted. Scheduled Actions only fire on the default branch — until then, run locally or `workflow_dispatch` this ref.
+The CRT board in `docs/` reads that JSON (last-round + due list). GitHub Pages is `main`/`docs`: https://corvid-agent.github.io/arcron-keeper-ts/ . `listen.yml` is on the default branch, so the weekday 9am / 12pm / 4pm America/Denver schedule fires. `workflow_dispatch` works any day.
 
 ## Measured cost
 
