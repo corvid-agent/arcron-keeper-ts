@@ -36,10 +36,13 @@ bun src/cli.ts --dry-run
 
 `scripts/listen.ts` talks to TestNet algod only. It reuses `src/scan.ts` (package `decodeUpkeep`, not a vendored CorvidLabs/arcron decoder), skips upkeep 81 and target app `770041460`, and writes `docs/due.json`. It does **not** sign, has **no mnemonic**, and is **not** an execute.
 
+`scripts/rain.ts` walks hub `770130162` RainRec boxes (224 bytes, key `r||id`) and writes `docs/rain.json`. No key. Not a send. Same weekday schedule as listen.
+
 Weekdays at 15:00, 18:00, and 22:00 UTC (9am / 12pm / 4pm America/Denver) `.github/workflows/listen.yml` runs `bun scripts/listen.ts` and commits `docs/due.json` if it changed. No secrets.
 
 ```
 bun scripts/listen.ts
+bun scripts/rain.ts
 ```
 
 The CRT board in `docs/` reads that JSON (last-round + due list). GitHub Pages is `main`/`docs`: https://corvid-agent.github.io/arcron-keeper-ts/ . `listen.yml` is on the default branch, so the weekday 9am / 12pm / 4pm America/Denver schedule fires. `workflow_dispatch` works any day.
