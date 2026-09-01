@@ -4,22 +4,21 @@ A TestNet Arcron keeper that depends on the published `@corvidlabs/arcron` JS cl
 
 ## Live proof
 
-Against TestNet algod, keeper app `769891898`, 2026-08-30:
+Against TestNet algod, keeper app `769891898`, listener refresh 2026-09-01 09:18 America/Denver (read-only; LocalNet was stalled at round 55):
 
 ```
 network  TestNet testnet-v1.0
 app      769891898
-round    66823675
-mode     dry-run (signs nothing)
-fee      EXECUTE_FEE=3000 uALGO (+1000 if ASA opted in)
-SKIP id=81 target=770041460 fee=10000 next=66824344 skip list: upkeep 81
-DUE  id=87 target=770082145 fee=20000 next=66793489
-counts  due=1 skipped=1 waiting=26 total=28
-dry-run: would call package execute() on due ids [87]
-dry-run: no signer loaded, no transaction submitted.
+round    66883910
+mode     listen (signs nothing)
+SKIP id=81
+DUE  id=82 target=769891902 fee=10303 next=66883754 balance=7078687 times=84
+counts  due=1 skipped=1 listed=33
+listener: no signer loaded, no transaction submitted.
+rain hub 770130162 last_round=66883911 rains=5 (id3 abandonable)
 ```
 
-No live execute was submitted. The TestNet dispenser is captcha-walled here, so there is no throwaway-funded account and no txid.
+No live execute was submitted. Upkeep 81 skipped; 87 not poked. CoS has no bank.env / mnemonic. CRT board reads `docs/due.json` + `docs/rain.json`.
 
 ## How to run
 
