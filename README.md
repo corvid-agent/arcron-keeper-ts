@@ -4,18 +4,17 @@ A TestNet Arcron keeper that depends on the published `@corvidlabs/arcron` JS cl
 
 ## Live proof
 
-Against TestNet algod, keeper app `769891898`, listener refresh 2026-09-01 09:18 America/Denver (read-only; LocalNet was stalled at round 55):
+Against TestNet algod, keeper app `769891898`, listener refresh 2026-09-01 16:46 America/Denver (read-only):
 
 ```
 network  TestNet testnet-v1.0
 app      769891898
-round    66883910
+round    66893885
 mode     listen (signs nothing)
 SKIP id=81
-DUE  id=82 target=769891902 fee=10303 next=66883754 balance=7078687 times=84
-counts  due=1 skipped=1 listed=33
+counts  due=0 skipped=1 listed=33
 listener: no signer loaded, no transaction submitted.
-rain hub 770130162 last_round=66883911 rains=5 (id3 abandonable)
+rain hub 770130162 last_round=66893886 rains=5 (id3 abandonable)
 ```
 
 No live execute was submitted. Upkeep 81 skipped; 87 not poked. CoS has no bank.env / mnemonic. CRT board reads `docs/due.json` + `docs/rain.json`.
