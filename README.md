@@ -36,6 +36,8 @@ bun src/cli.ts --dry-run
 
 `scripts/rain.ts` walks hub `770130162` RainRec boxes (224 bytes, key `r||id`) and writes `docs/rain.json`. No key. Not a send. Same weekday schedule as listen. Hub is pre-#213 (prize_locked field exists; enter-while-locked assert does not) and immutable. Not product rain. Do not copy this app id into `arcron-rain` ([#232](https://github.com/CorvidLabs/arcron/issues/232)).
 
+Product hub is `770746178` (`docs/rain-product.json`); demo hub is `770130162` (`docs/rain.json`).
+
 Weekdays at 15:00, 18:00, and 22:00 UTC (9am / 12pm / 4pm America/Denver) `.github/workflows/listen.yml` runs `bun scripts/listen.ts` and commits `docs/due.json` if it changed. No secrets.
 
 ```

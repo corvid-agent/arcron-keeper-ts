@@ -1,0 +1,66 @@
+{
+  "generated_at": "2026-09-02T12:51:27Z",
+  "algod": "https://testnet-api.algonode.cloud",
+  "indexer": "https://testnet-idx.algonode.cloud",
+  "hub": 770746178,
+  "genesis": "testnet-v1.0",
+  "genesis_hash": "SGO1GKSzyE7IEPItTxCByw9x8FmnrCDexi9/cOUJOiI=",
+  "last_round": 66912670,
+  "notes": "layout not assumed from 770130162",
+  "creator": "E5M2OH5XNDMNABJ6VOFOUVR2IKRPCGQH43PVC5P3DWQQ2LV2VJV2FJZQ3E",
+  "created_at_round": 66837443,
+  "extra_program_pages": 2,
+  "global_state": {
+    "bootstrapped": 1,
+    "cursor": 0,
+    "next_rain_id": 2
+  },
+  "global_state_schema": {
+    "num-byte-slice": 0,
+    "num-uint": 3
+  },
+  "local_state_schema": {
+    "num-byte-slice": 0,
+    "num-uint": 0
+  },
+  "boxes": [
+    {
+      "name_b64": "cgAAAAAAAAAB",
+      "name_hex": "720000000000000001",
+      "name_len": 9,
+      "value_len": 224,
+      "name_prefix": "r",
+      "id": 1
+    },
+    {
+      "name_b64": "cgAAAAAAAAAC",
+      "name_hex": "720000000000000002",
+      "name_len": 9,
+      "value_len": 224,
+      "name_prefix": "r",
+      "id": 2
+    },
+    {
+      "name_b64": "dAAAAAAAAAABsaRxcnhWAy8S/a9Jv/wwGtVkIeERXLzDKLiUcqCKi8I=",
+      "name_hex": "740000000000000001b1a471727856032f12fdaf49bffc301ad56421e1115cbcc328b89472a08a8bc2",
+      "name_len": 41,
+      "value_len": 24,
+      "name_prefix": "t",
+      "id": 1,
+      "key32_hex": "b1a471727856032f12fdaf49bffc301ad56421e1115cbcc328b89472a08a8bc2",
+      "key32_algorand_addr": "WGSHC4TYKYBS6EX5V5E377BQDLKWIIPBCFOLZQZIXCKHFIEKRPBFOMW25A",
+      "value_hex": "000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name_b64": "dAAAAAAAAAACsaRxcnhWAy8S/a9Jv/wwGtVkIeERXLzDKLiUcqCKi8I=",
+      "name_hex": "740000000000000002b1a471727856032f12fdaf49bffc301ad56421e1115cbcc328b89472a08a8bc2",
+      "name_len": 41,
+      "value_len": 24,
+      "name_prefix": "t",
+      "id": 2,
+      "key32_hex": "b1a471727856032f12fdaf49bffc301ad56421e1115cbcc328b89472a08a8bc2",
+      "key32_algorand_addr": "WGSHC4TYKYBS6EX5V5E377BQDLKWIIPBCFOLZQZIXCKHFIEKRPBFOMW25A",
+      "value_hex": "000000000000000000000000000000010000000000000000"
+    }
+  ]
+}
