@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-03T23:48:23Z",
+  "generated_at": "2026-09-04T18:08:25Z",
   "algod": "https://testnet-api.algonode.cloud",
   "hub": 770130162,
   "genesis": "testnet-v1.0",
-  "last_round": 66959351,
+  "last_round": 66983810,
   "next_rain_id": 5,
   "rains": [
     {
@@ -11,8 +11,8 @@
       "label": "Corvid daily",
       "mode": "SPLIT",
       "drip": 50000,
-      "pot": 750000,
-      "tickets": 1,
+      "pot": 5750000,
+      "tickets": 2,
       "prize_locked": 0,
       "commit_round": 0,
       "status": "open"
