@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-04T17:51:26Z",
+  "generated_at": "2026-09-04T19:56:12Z",
   "algod": "https://testnet-api.algonode.cloud",
   "app": 769891898,
   "genesis": "testnet-v1.0",
-  "last_round": 66983429,
+  "last_round": 66986210,
   "listed": 36,
   "skipped": [
     81
@@ -14,25 +14,43 @@
   "skip_target_apps": [
     770041460
   ],
-  "due_count": 7,
+  "due_count": 8,
   "due": [
     {
-      "id": 84,
-      "target": 770081902,
+      "id": 82,
+      "target": 769891902,
       "interval": 1286,
-      "next": 66982382,
-      "fee": 17838,
-      "balance": 6317614,
-      "times": 149
+      "next": 66985348,
+      "fee": 10000,
+      "balance": 6289161,
+      "times": 153
+    },
+    {
+      "id": 92,
+      "target": 770081921,
+      "interval": 1286,
+      "next": 66986147,
+      "fee": 4000,
+      "balance": 2544000,
+      "times": 133
+    },
+    {
+      "id": 93,
+      "target": 770081916,
+      "interval": 1286,
+      "next": 66986192,
+      "fee": 10000,
+      "balance": 6268503,
+      "times": 133
     },
     {
       "id": 94,
       "target": 770081916,
       "interval": 1286,
-      "next": 66982337,
-      "fee": 17807,
-      "balance": 6300036,
-      "times": 128
+      "next": 66986195,
+      "fee": 10000,
+      "balance": 6270036,
+      "times": 130
     },
     {
       "id": 116,
@@ -47,10 +65,10 @@
       "id": 117,
       "target": 770881358,
       "interval": 1286,
-      "next": 66983372,
+      "next": 66985944,
       "fee": 4000,
-      "balance": 2808000,
-      "times": 54
+      "balance": 2800000,
+      "times": 56
     },
     {
       "id": 118,
@@ -65,19 +83,10 @@
       "id": 119,
       "target": 770881471,
       "interval": 1286,
-      "next": 66982154,
+      "next": 66984726,
       "fee": 4000,
-      "balance": 2812000,
-      "times": 53
-    },
-    {
-      "id": 120,
-      "target": 770885800,
-      "interval": 1700,
-      "next": 66982292,
-      "fee": 4000,
-      "balance": 348000,
-      "times": 39
+      "balance": 2804000,
+      "times": 55
     }
   ]
 }
