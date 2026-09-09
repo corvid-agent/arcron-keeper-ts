@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-08T18:09:01Z",
+  "generated_at": "2026-09-09T15:02:20Z",
   "algod": "https://testnet-api.algonode.cloud",
   "app": 769891898,
   "genesis": "testnet-v1.0",
-  "last_round": 67112000,
+  "last_round": 67139880,
   "listed": 36,
   "skipped": [
     81
@@ -14,25 +14,25 @@
   "skip_target_apps": [
     770041460
   ],
-  "due_count": 7,
+  "due_count": 4,
   "due": [
     {
-      "id": 86,
-      "target": 770081921,
+      "id": 94,
+      "target": 770081916,
       "interval": 1286,
-      "next": 67110997,
-      "fee": 16314,
-      "balance": 3287747,
-      "times": 242
+      "next": 67139229,
+      "fee": 14066,
+      "balance": 5036417,
+      "times": 244
     },
     {
       "id": 112,
       "target": 770742777,
       "interval": 1700,
-      "next": 67109237,
+      "next": 67139837,
       "fee": 4000,
-      "balance": 1856000,
-      "times": 154
+      "balance": 1788000,
+      "times": 171
     },
     {
       "id": 116,
@@ -44,15 +44,6 @@
       "times": 2
     },
     {
-      "id": 117,
-      "target": 770881358,
-      "interval": 1286,
-      "next": 67111972,
-      "fee": 4000,
-      "balance": 2408000,
-      "times": 154
-    },
-    {
       "id": 118,
       "target": 770881395,
       "interval": 1700,
@@ -60,24 +51,6 @@
       "fee": 4000,
       "balance": 504000,
       "times": 0
-    },
-    {
-      "id": 119,
-      "target": 770881471,
-      "interval": 1286,
-      "next": 67110754,
-      "fee": 4000,
-      "balance": 2412000,
-      "times": 153
-    },
-    {
-      "id": 120,
-      "target": 770885800,
-      "interval": 1700,
-      "next": 67111492,
-      "fee": 4000,
-      "balance": 44000,
-      "times": 115
     }
   ]
 }
